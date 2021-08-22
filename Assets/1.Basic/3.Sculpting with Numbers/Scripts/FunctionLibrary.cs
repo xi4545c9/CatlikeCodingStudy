@@ -2,6 +2,17 @@
 using static UnityEngine.Mathf;
 public static class FunctionLibrary
 {
+  public delegate float Function(float x, float t);
+
+  public enum FunctionName
+  {
+    Wave,MultiWave,Ripple
+  }
+  private static Function[] functions={Wave,MultiWave,Ripple};
+  public static Function GetFunction(FunctionName name)
+  {
+    return functions[(int)name];
+  }
   public static float Wave(float x,float t)
   {
     return Sin(PI * (x + t));
@@ -19,5 +30,4 @@ public static class FunctionLibrary
     float y = Sin(PI*(4f*d-t));
     return y/(1f+10f*d);
   }
-  
 }
