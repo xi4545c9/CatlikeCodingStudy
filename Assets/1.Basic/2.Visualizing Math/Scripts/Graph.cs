@@ -9,6 +9,9 @@ public class Graph : MonoBehaviour
   [SerializeField,Range(10,100)] 
   private int resolution = 10;
 
+  [SerializeField, Range(0, 2)] 
+  private int function = 0;
+
   private Transform[] points;
   
   private void Awake()
@@ -36,7 +39,19 @@ public class Graph : MonoBehaviour
     {
       Transform point = points[i];
       Vector3 position = point.localPosition;
-      position.y = FunctionLibrary.Wave(position.x,time);
+      if (function == 0)
+      {
+        position.y = FunctionLibrary.Wave(position.x, time);
+      }
+      else if(function==1)
+      {
+        position.y = FunctionLibrary.MultiWave(position.x, time);
+      }
+      else
+      {
+        position.y = FunctionLibrary.Ripple(position.x, time);
+      }
+      
       point.localPosition = position;
     }
   }
