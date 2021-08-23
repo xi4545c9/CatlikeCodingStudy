@@ -21,7 +21,7 @@ public class Graph3D : MonoBehaviour
         //var position = Vector3.zero;
         var scale = Vector3.one*step;
         points = new Transform[resolution*resolution];
-        for (int i = 0,x=0,z=0; i < points.Length; i++,x++)
+        for (int i = 0,x=0; i < points.Length; i++,x++)
         {
             /*if (x == resolution)
             {
